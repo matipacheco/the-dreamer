@@ -1,5 +1,6 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
+from prettytable import PrettyTable
 
 class TheDreamer:
 	def __init__(self):
@@ -9,6 +10,8 @@ class TheDreamer:
 	def look_for_jobs(self):
 		job_oppening = self.soup.find("div", attrs = { "Table-container" })
 		
+		table = PrettyTable(["URL", "Position", "Project", "Location", "Position type"])
+
 		for job in job_oppening:
 			link          = job.get('href')
 			position      = job.contents[0].get_text()
@@ -16,4 +19,6 @@ class TheDreamer:
 			location      = job.contents[2].get_text()
 			position_type = job.contents[3].get_text()
 
-			print(link, position, area, location, position_type)
+			table.add_row([link, position, area, location, position_type])
+
+		print(table)

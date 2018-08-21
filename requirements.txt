@@ -1,1 +1,2 @@
 beautifulsoup4==4.6.3
+prettytable==0.7.2
