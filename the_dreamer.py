@@ -8,7 +8,7 @@ class TheDreamer:
 		self.soup = BeautifulSoup(site, "html.parser")
 
 	def look_for_jobs(self):
-		job_oppening = self.soup.find("div", attrs = { "Table-container" })
+		job_oppening = self.soup.findAll(attrs = { "Table-item" })
 		
 		table = PrettyTable(["URL", "Position", "Project", "Location", "Position type"])
 
